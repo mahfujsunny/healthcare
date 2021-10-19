@@ -1,0 +1,14 @@
+.choosing-section h2{
+    font-size: 60px;
+    font-weight: bolder;
+    color: rgba(255, 0, 0, 0.576);
+}
+
+.choosing-section h5{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.choosing-section p{
+    color: grey;
+}
