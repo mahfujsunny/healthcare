@@ -1,70 +1,4 @@
-// import { useEffect, useState } from "react"
-// import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, createUserWithEmailAndPassword} from "firebase/auth";
-// import InitializeAuthentication from "../Firebase/firebase.init";
 
-// InitializeAuthentication();
-
-
-// const useFirebase = () => {
-//     const {user , setUser} = useState({})
-//     const {error, setError} = useState({})
-//     // const {email, setEmail} = useState({})
-//     // const {password, setPassword} = useState({})
-
-//      const auth = getAuth();
-//      const googleProvider = new GoogleAuthProvider();
-
-//      const SignInUsingGoogle =() => {
-//         signInWithPopup(auth, googleProvider)
-//         .then(result => {
-//            console.log(result.user);
-//         })
-//         .catch((error) => {
-//            setError(error.message) 
-//         }) 
-//      }
-
-//      const Logout = () =>{
-//          signOut(auth)
-//          .then(() => {
-//             setUser({})
-//          })
-//          .catch((error) => {
-//             setError(error.message)
-//          })
-//      }
-
-//     //  const signInUsingEmailPassword =(email, password) => {
-//     //     createUserWithEmailAndPassword(auth, email, password)
-//     //     .then((result) => { 
-//     //       setEmail(result.user);
-//     //       // ...
-//     //     })
-//     //     .catch((error) => {
-//     //       setError(error.message);
-          
-//     //     });
-//     //  }
-
-//      useEffect(() => {
-//          onAuthStateChanged(auth, (user) => {
-//              if(user) {
-//                  setUser(user);
-//              }
-//          })
-//      } ,[])
-     
-
-//      return{
-//          user,
-//          error,
-//          SignInUsingGoogle,
-//          Logout,
-//         //  signInUsingEmailPassword
-//      }
-// }
-
-// export default useFirebase;
 
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
@@ -77,29 +11,29 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true)
 
-    // registration with email and password------
+    // registration with email and password //////
     const [isLogin, setIsLogin] = useState(false)
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    // set email ------------------------------
+    // set email 
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
 
     }
 
-    // set password ----------------------------
+    // set password 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value)
     }
 
-    // toggle---------------------------------
+    // toggle login
     const toggle = e => {
         setIsLogin(e.target.checked)
     }
-    // registration --------------------------
+    
     const handleRegister = (e) => {
         e.preventDefault();
         console.log(email, password);
@@ -144,7 +78,6 @@ const useFirebase = () => {
             .catch(error => {
                 setError(error.message);
             })
-        // e.preventDefault();
     }
 
 
@@ -155,10 +88,9 @@ const useFirebase = () => {
 
 
 
-    // sign in with google --------------------
+    // Google signin
     const googleSignIn = () => {
         setIsLoading(true);
-        // const googleProvider = new GoogleAuthProvider();
         signInWithPopup(auth, googleProvider)
             .then(result => {
                 setUser(result.user)
@@ -167,7 +99,7 @@ const useFirebase = () => {
 
 
     }
-    // for state change
+    
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, user => {
             if (user) {

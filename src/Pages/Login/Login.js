@@ -5,10 +5,8 @@ import useAuth from '../../Hooks/useAuth';
 
 
 
-// initializeAuthentication();
 
 const Login = () => {
-    // const auth = getAuth();
     const [name, setName] = useState('')
 
     const handleNameChange = (e) => {
