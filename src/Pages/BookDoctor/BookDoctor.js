@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import "./BookDoctor.css"
 
 const BookDoctor = () => {
     const {doctorid} = useParams();
@@ -16,12 +17,15 @@ const BookDoctor = () => {
     return (
         <div className="container">
 
-            <div className="">
+            <div className="card booking-doctor border border-danger">
                { booking && <>
-                <h2>{doctorid}</h2>
-                <img src={booking?.image} alt="" />
-                <h2>{booking?.name}</h2>
-                <p>{booking?.description}</p>
+                <img className="" src={booking?.image} alt="" />
+                <div className="card-body">
+                    <h2 className="">{doctorid}</h2>
+                    <h2 >{booking?.name}</h2>
+                    <p>{booking?.description}</p>
+                </div>
+                
                </>}
             </div>
         </div>
